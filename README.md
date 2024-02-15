@@ -1,6 +1,6 @@
-# DO NOT USE
+# DO NOT USE (with podman)
 
-Healthcheck not working on podman-compose (not tested on docker) if /bin/sh not available in container even when using CMD in heathcheck.test.
+Healthcheck not working on podman-compose if /bin/sh not available in container even when using CMD in heathcheck.test.
 
 ```sh
 $ podman version 
