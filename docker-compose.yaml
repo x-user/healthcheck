@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  test:
+    build:
+      context: .
+    container_name: healthcheck_test
+    healthcheck:
+      test: [
+        "CMD",
+        "/healthcheck",
+        "http://localhost:8080/ping"
+      ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
