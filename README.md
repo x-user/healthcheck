@@ -34,7 +34,7 @@ podman-compose up starts container with command bellow, as you can see there /bi
 podman create --name=healthcheck_test --label io.podman.compose.config-hash=b5184eebbcd6771431f65589acd3da493bee2c80599c8cbb1e22595b05923a72 --label io.podman.compose.project=healthcheck --label io.podman.compose.version=1.0.6 --label PODMAN_SYSTEMD_UNIT=podman-compose@healthcheck.service --label com.docker.compose.project=healthcheck --label com.docker.compose.project.working_dir=/home/x-user/src/healthcheck --label com.docker.compose.project.config_files=docker-compose.yaml --label com.docker.compose.container-number=1 --label com.docker.compose.service=test --net healthcheck_default --network-alias test --healthcheck-command /bin/sh -c /healthcheck' 'http://localhost:8080/ping --healthcheck-interval 5s --healthcheck-timeout 5s --healthcheck-retries 5 healthcheck_test
 ```
 
-Co reason behind this behavior is how podman-compose convert this parameters to command line arguments for podman ([link](https://github.com/containers/podman-compose/blob/831caa627642695a621ad9e77b830b05d5fd050d/podman_compose.py#L1053-L1055)):
+So reason behind this behavior is how podman-compose convert this parameters to command line arguments for podman ([link](https://github.com/containers/podman-compose/blob/831caa627642695a621ad9e77b830b05d5fd050d/podman_compose.py#L1053-L1055)):
 
 ```py title="podman_compose.py" hl_lines="14-16"
     if healthcheck_test:
